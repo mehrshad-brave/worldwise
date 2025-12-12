@@ -21,7 +21,7 @@ function City() {
 
   // const { cityName, emoji, date, notes } = currentCity;
 
-  return <p>Id in contryes {id}</p>
+  return <p>Id in  {id}</p>
 
 //   return (
 //     <div className={styles.city}>
