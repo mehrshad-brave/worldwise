@@ -9,6 +9,7 @@ import AppLayout from './pages/AppLayout';
 import CityList from './components/CityList';
 import CountryList from './components/CountryList';
 import City from './components/City';
+import Form from './components/Form';
 
 function App() {
   const [data, setData] = useState([]);
@@ -42,10 +43,12 @@ function App() {
         <Route path='cityes' element={<CityList data={data} isLoade={isLoade}/>} />
         <Route path='cityes/:id' element={<City />} />
         <Route path='contries' element={<CountryList citye={data}/>} />
+        <Route path='form' element={<Form />} />
       </Route>
       <Route path='login' element={<Login />} />
       <Route path='*' element={<PageNotFound />} />
     </Routes>
+    
   </BrowserRouter>
   )
 }
