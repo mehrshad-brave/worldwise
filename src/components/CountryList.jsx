@@ -3,15 +3,18 @@ import Spinner from './Spinner';
 import CityItem from './CityItem';
 import CountryItem from './CountryItem';
 import Message from './Message';
+import { useCities } from '../contexts/CitiesContext'
 
-function CountryList({citye, isLoade}) {
+function CountryList() {
+  const {data, isLoade} = useCities();
+  
   if(isLoade) return <Spinner />
   
-  if(!citye.length) {
+  if(!data.length) {
     <Message message="Add your first city by clicking on a city on the map" />
   }
   
-  const newListCity = citye.reduce((cur, acc) => {
+  const newListCity = data.reduce((cur, acc) => {
     if(!cur.map(item => item.country).includes(acc.country)) return  [...cur, {emoji: acc.emoji,country: acc.country}];
     else return cur;
   }, []);
