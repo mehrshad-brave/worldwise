@@ -8,16 +8,15 @@ import {
   useMap } from 'react-leaflet';
 import styles from './Map.module.css';
 
-import { useCities } from '../contexts/CitiesContext'
+import { useCities } from '../contexts/CitiesContext';
+import { useUrlPosition } from '../hooks/useUrlPosition';
 
 
 function Map() {
   const { data } = useCities();
-  const [query, setQuery] = useSearchParams();
   const [mapPosition, setMapPosition] = useState([40, 0]);
   
-  const mapLat = query.get('lat');
-  const mapLng = query.get('lng');
+  const [mapLat, mapLng] = useUrlPosition();
   
   useEffect(function() {
     if(mapLat && mapLng) setMapPosition([mapLat, mapLng]);
